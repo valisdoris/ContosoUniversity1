@@ -1,11 +1,4 @@
-﻿using ContosoUniversity.Models;
-
-namespace ContosoUniversity.Data
-{
-    public class DbInitializer
-    {
-    }
-}
+﻿
 using ContosoUniversity.Models;
 using System;
 using System.Linq;

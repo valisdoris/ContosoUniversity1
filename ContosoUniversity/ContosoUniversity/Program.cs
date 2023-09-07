@@ -1,6 +1,8 @@
 using ContosoUniversity.Data;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<SchoolContext>(options =>
