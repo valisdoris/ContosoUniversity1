@@ -31,6 +31,7 @@ namespace ContosoUniversity
             // Building the Application.
             var app = builder.Build();
 
+            // Create a database and seed it with initial data
             CreateDbIfNotExists(app);
 
             // Configure the HTTP request pipeline.
@@ -58,16 +59,19 @@ namespace ContosoUniversity
         }
         private static void CreateDbIfNotExists(WebApplication app)
         {
-            
+            //Creates a new scope within which you can resolve and use services.
             using (var scope = app.Services.CreateScope())
             {
-                
+                // This line retrieves the IServiceProvider from the created scope.
+                // The IServiceProvider is responsible for managing and providing access to registered services.
                 var services = scope.ServiceProvider;
                 try
                 {
-                   
+                    // Requesting an instance of the SchoolContext class from the service provider.
+                    // The GetRequiredService method is used to retrieve a service of a specific type. 
                     var context = services.GetRequiredService<SchoolContext>();
-                   
+                    //Assuming that context now holds an instance of SchoolContext, this line calls the DbInitializer.Initialize method
+                    //and passes the SchoolContext instance as an argument. This is where the actual database initialization and seed data insertion occur.
                     DbInitializer.Initialize(context);
                 }
                 catch (Exception ex)
